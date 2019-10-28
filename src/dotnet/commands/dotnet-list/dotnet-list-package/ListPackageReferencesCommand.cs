@@ -53,47 +53,59 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
 
             if (_appliedCommand.HasOption("include-prerelease"))
             {
-                CheckForOutdatedOrDeprecated("--include-prerelease");
+                CheckForOutdatedOrDeprecatedOrVulnerable("--include-prerelease");
             }
 
             if (_appliedCommand.HasOption("highest-patch"))
             {
-                CheckForOutdatedOrDeprecated("--highest-patch");
+                CheckForOutdatedOrDeprecatedOrVulnerable("--highest-patch");
             }
 
             if (_appliedCommand.HasOption("highest-minor"))
             {
-                CheckForOutdatedOrDeprecated("--highest-minor");
+                CheckForOutdatedOrDeprecatedOrVulnerable("--highest-minor");
             }
 
             if (_appliedCommand.HasOption("config"))
             {
-                CheckForOutdatedOrDeprecated("--config");
+                CheckForOutdatedOrDeprecatedOrVulnerable("--config");
             }
 
             if (_appliedCommand.HasOption("source"))
             {
-                CheckForOutdatedOrDeprecated("--source");
+                CheckForOutdatedOrDeprecatedOrVulnerable("--source");
             }
 
-            if (_appliedCommand.HasOption("deprecated") && _appliedCommand.HasOption("outdated"))
-            {
-                throw new GracefulException(LocalizableStrings.OutdatedAndDeprecatedOptionsCannotBeCombined);
-            }
+            CheckForInvalidCommandOptionCombinations("outdated", "deprecated");
+            CheckForInvalidCommandOptionCombinations("outdated", "vulnerable");
+            CheckForInvalidCommandOptionCombinations("deprecated", "vulnerable");
 
             return args.ToArray();
         }
 
         /// <summary>
-        /// A check for the outdated and deprecated specific options. If --outdated or --deprecated not present,
-        /// these options must not be used, so error is thrown.
+        /// A check for invalid combinations of specific options.
+        /// If the combination is invalid, an error is thrown.
+        /// </summary>
+        private void CheckForInvalidCommandOptionCombinations(AppliedOption appliedCommand, string option1, string option2)
+        {
+            if (appliedCommand.HasOption(option1) && appliedCommand.HasOption(option2))
+            {
+                throw new GracefulException(LocalizableStrings.OptionsCannotBeCombined, option1, option2);
+            }
+        }
+
+        /// <summary>
+        /// A check for the outdated, deprecated and vulnerable specific options. 
+        /// If --outdated, --deprecated, or --vulnerable are not present,
+        /// these options must not be used and an error is thrown.
         /// </summary>
         /// <param name="option"></param>
-        private void CheckForOutdatedOrDeprecated(string option)
+        private void CheckForOutdatedOrDeprecatedOrVulnerable(string option)
         {
-            if (!_appliedCommand.HasOption("deprecated") && !_appliedCommand.HasOption("outdated"))
+            if (!_appliedCommand.HasOption("deprecated") && !_appliedCommand.HasOption("outdated") && !_appliedCommand.HasOption("vulnerable"))
             {
-                throw new GracefulException(LocalizableStrings.OutdatedOrDeprecatedOptionOnly, option);
+                throw new GracefulException(LocalizableStrings.OutdatedOrDeprecatedOrVulnerableOptionOnly, option);
             }
         }
 
