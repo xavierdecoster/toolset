@@ -42,6 +42,11 @@
         <target state="new">Option '--deprecated' and '--vulnerable' cannot be combined.</target>
         <note />
       </trans-unit>
+      <trans-unit id="MandatoryOptionMissing">
+        <source>Option '{0}' requires the usage of one of the following options: {1}.</source>
+        <target state="new">Option '{0}' requires the usage of one of the following options: {1}.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="NoProjectsOrSolutions">
         <source>A project or solution file could not be found in {0}. Specify a project or solution file to use.</source>
         <target state="translated">{0} neobsahuje žádný soubor projektu nebo řešení. Zadejte soubor projektu nebo řešení, který chcete použít.</target>
@@ -58,17 +63,17 @@
         <note />
       </trans-unit>
       <trans-unit id="CmdHighestMinorDescription">
-        <source>Consider only the packages with a matching major version number when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider only the packages with a matching major version number when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Při hledání novějších balíčků se budou brát v úvahu jen balíčky s odpovídajícím číslem hlavní verze. Vyžaduje přepínač --outdated nebo --deprecated.</target>
         <note />
       </trans-unit>
       <trans-unit id="CmdHighestPatchDescription">
-        <source>Consider only the packages with a matching major and minor version numbers when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider only the packages with a matching major and minor version numbers when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Při hledání novějších balíčků se budou brát v úvahu jen balíčky s odpovídajícími čísly hlavní verze a podverze. Vyžaduje přepínač --outdated nebo --deprecated.</target>
         <note />
       </trans-unit>
       <trans-unit id="CmdPrereleaseDescription">
-        <source>Consider packages with prerelease versions when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider packages with prerelease versions when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Při hledání novějších balíčků se budou brát v úvahu i balíčky v předběžných verzích. Vyžaduje přepínač --outdated nebo --deprecated.</target>
         <note />
       </trans-unit>
@@ -82,24 +87,14 @@
         <target state="needs-review-translation">Zdroje NuGet, které se mají použít při hledání novějších balíčků. Vyžaduje přepínač --outdated nebo --deprecated.</target>
         <note />
       </trans-unit>
-      <trans-unit id="OutdatedAndDeprecatedOptionsCannotBeCombined">
-        <source>Option '--outdated' and '--deprecated' cannot be combined.</source>
-        <target state="translated">Možnosti --outdated a --deprecated se nedají kombinovat.</target>
-        <note />
-      </trans-unit>
       <trans-unit id="FileNotFound">
         <source>Could not find file or directory '{0}'.</source>
         <target state="translated">Soubor nebo adresář {0} nešlo najít.</target>
         <note />
       </trans-unit>
-      <trans-unit id="OutdatedAndVulnerableOptionsCannotBeCombined">
-        <source>Option '--outdated' and '--vulnerable' cannot be combined.</source>
-        <target state="new">Option '--outdated' and '--vulnerable' cannot be combined.</target>
-        <note />
-      </trans-unit>
-      <trans-unit id="OutdatedOrDeprecatedOrVulnerableOptionOnly">
-        <source>Option '{0}' requires the '--outdated', '--deprecated', or '--vulnerable' option to be specified.</source>
-        <target state="new">Option '{0}' requires the '--outdated', '--deprecated', or '--vulnerable' option to be specified.</target>
+      <trans-unit id="OptionsCannotBeCombined">
+        <source>Options '{0}' and '{1}' cannot be combined.</source>
+        <target state="new">Options '{0}' and '{1}' cannot be combined.</target>
         <note />
       </trans-unit>
     </body>

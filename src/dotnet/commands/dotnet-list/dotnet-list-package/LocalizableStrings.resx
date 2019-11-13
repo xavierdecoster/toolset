@@ -162,16 +162,16 @@
   <data name="CmdDeprecatedDescription" xml:space="preserve">
     <value>Lists packages that have been deprecated. Cannot be combined with `--outdated` or `--vulnerable` options.</value>
   </data>
-  <data name="OutdatedOrDeprecatedOrVulnerableOptionOnly" xml:space="preserve">
-    <value>Option '{0}' requires the '--outdated', '--deprecated', or '--vulnerable' option to be specified.</value>
-  </data>
   <data name="CmdVulnerableDescription" xml:space="preserve">
     <value>Lists packages that have known vulnerabilities. Cannot be combined with `--outdated` or `--deprecated` options.</value>
   </data>
   <data name="DeprecatedAndVulnerableOptionsCannotBeCombined" xml:space="preserve">
     <value>Option '--deprecated' and '--vulnerable' cannot be combined.</value>
   </data>
+  <data name="MandatoryOptionMissing" xml:space="preserve">
+    <value>Option '{0}' requires the usage of one of the following options: {1}.</value>
+  </data>
   <data name="OptionsCannotBeCombined" xml:space="preserve">
-    <value>Option '{0}' and '{1}' cannot be combined.</value>
+    <value>Options '{0}' and '{1}' cannot be combined.</value>
   </data>
 </root>

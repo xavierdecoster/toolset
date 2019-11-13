@@ -42,6 +42,11 @@
         <target state="new">Option '--deprecated' and '--vulnerable' cannot be combined.</target>
         <note />
       </trans-unit>
+      <trans-unit id="MandatoryOptionMissing">
+        <source>Option '{0}' requires the usage of one of the following options: {1}.</source>
+        <target state="new">Option '{0}' requires the usage of one of the following options: {1}.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="NoProjectsOrSolutions">
         <source>A project or solution file could not be found in {0}. Specify a project or solution file to use.</source>
         <target state="translated">Non è stato possibile trovare un file di progetto o di soluzione in {0}. Specificare un file di progetto o di soluzione da usare.</target>
@@ -58,17 +63,17 @@
         <note />
       </trans-unit>
       <trans-unit id="CmdHighestMinorDescription">
-        <source>Consider only the packages with a matching major version number when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider only the packages with a matching major version number when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Prende in considerazione solo i pacchetti con il numero di versione principale corrispondente quando si cercano i pacchetti più recenti. Richiede l'opzione '--outdated' o '--deprecated'.</target>
         <note />
       </trans-unit>
       <trans-unit id="CmdHighestPatchDescription">
-        <source>Consider only the packages with a matching major and minor version numbers when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider only the packages with a matching major and minor version numbers when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Prende in considerazione solo i pacchetti con i numeri di versione principale e secondaria corrispondenti quando si cercano i pacchetti più recenti. Richiede l'opzione '--outdated' o '--deprecated'.</target>
         <note />
       </trans-unit>
       <trans-unit id="CmdPrereleaseDescription">
-        <source>Consider packages with prerelease versions when searching for newer packages. Requires the '--outdated', '--deprecated', or `--vulnerable` option.</source>
+        <source>Consider packages with prerelease versions when searching for newer packages. Requires the '--outdated' option.</source>
         <target state="needs-review-translation">Prende in considerazione i pacchetti con versioni preliminari quando si cercano i pacchetti più recenti. Richiede l'opzione '--outdated' o '--deprecated'.</target>
         <note />
       </trans-unit>
@@ -82,24 +87,14 @@
         <target state="needs-review-translation">Origini NuGet da usare quando si cercano i pacchetti più recenti. Richiede l'opzione '--outdated' o '--deprecated'.</target>
         <note />
       </trans-unit>
-      <trans-unit id="OutdatedAndDeprecatedOptionsCannotBeCombined">
-        <source>Option '--outdated' and '--deprecated' cannot be combined.</source>
-        <target state="translated">Non è possibile combinare le opzioni '--outdated' e '--deprecated'.</target>
-        <note />
-      </trans-unit>
       <trans-unit id="FileNotFound">
         <source>Could not find file or directory '{0}'.</source>
         <target state="translated">Non è stato possibile trovare il file o la directory '{0}'.</target>
         <note />
       </trans-unit>
-      <trans-unit id="OutdatedAndVulnerableOptionsCannotBeCombined">
-        <source>Option '--outdated' and '--vulnerable' cannot be combined.</source>
-        <target state="new">Option '--outdated' and '--vulnerable' cannot be combined.</target>
-        <note />
-      </trans-unit>
-      <trans-unit id="OutdatedOrDeprecatedOrVulnerableOptionOnly">
-        <source>Option '{0}' requires the '--outdated', '--deprecated', or '--vulnerable' option to be specified.</source>
-        <target state="new">Option '{0}' requires the '--outdated', '--deprecated', or '--vulnerable' option to be specified.</target>
+      <trans-unit id="OptionsCannotBeCombined">
+        <source>Options '{0}' and '{1}' cannot be combined.</source>
+        <target state="new">Options '{0}' and '{1}' cannot be combined.</target>
         <note />
       </trans-unit>
     </body>

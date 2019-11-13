@@ -51,36 +51,51 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
 
             args.AddRange(_appliedCommand.OptionValuesToBeForwarded());
 
-            if (_appliedCommand.HasOption("include-prerelease"))
+            // The following specific flags require one of the options that support these flags.
+            var specificFlags = new[] { "include-prerelease", "highest-patch", "highest-minor", "config", "source" };
+            var optionsSupportingSpecificFlag = new[] { "outdated", "deprecated", "vulnerable" };
+
+            foreach (var specificFlag in specificFlags)
             {
-                CheckForOutdatedOrDeprecatedOrVulnerable("--include-prerelease");
+                if (_appliedCommand.HasOption(specificFlag))
+                {
+                    CheckForRequiredOption(_appliedCommand, specificFlag, optionsSupportingSpecificFlag);
+                }
             }
 
-            if (_appliedCommand.HasOption("highest-patch"))
-            {
-                CheckForOutdatedOrDeprecatedOrVulnerable("--highest-patch");
-            }
-
-            if (_appliedCommand.HasOption("highest-minor"))
-            {
-                CheckForOutdatedOrDeprecatedOrVulnerable("--highest-minor");
-            }
-
-            if (_appliedCommand.HasOption("config"))
-            {
-                CheckForOutdatedOrDeprecatedOrVulnerable("--config");
-            }
-
-            if (_appliedCommand.HasOption("source"))
-            {
-                CheckForOutdatedOrDeprecatedOrVulnerable("--source");
-            }
-
-            CheckForInvalidCommandOptionCombinations("outdated", "deprecated");
-            CheckForInvalidCommandOptionCombinations("outdated", "vulnerable");
-            CheckForInvalidCommandOptionCombinations("deprecated", "vulnerable");
+            // The following flags cannot be combined in a single command.
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "outdated", "deprecated");
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "outdated", "vulnerable");
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "deprecated", "vulnerable");
 
             return args.ToArray();
+        }
+
+        /// <summary>
+        /// A check for a required combination of a specific flag with one of the supporting options.
+        /// </summary>
+        /// <param name="appliedCommand"></param>
+        /// <param name="specificFlag">The specific flag that requires the usage of one of the supporting options.</param>
+        /// <param name="supportingOptions">The command options supporting the specific flag.</param>
+        private void CheckForRequiredOption(AppliedOption appliedCommand, string specificFlag, string[] supportingOptions)
+        {
+            var supportingOptionDetected = false;
+            foreach (var supportingOption in supportingOptions)
+            {
+                if (appliedCommand.HasOption(supportingOption))
+                {
+                    supportingOptionDetected = true;
+                    break;
+                }
+            }
+
+            if (!supportingOptionDetected)
+            {
+                throw new GracefulException(
+                    LocalizableStrings.MandatoryOptionMissing,
+                    specificFlag,
+                    string.Join(",", supportingOptions));
+            }
         }
 
         /// <summary>
@@ -92,20 +107,6 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
             if (appliedCommand.HasOption(option1) && appliedCommand.HasOption(option2))
             {
                 throw new GracefulException(LocalizableStrings.OptionsCannotBeCombined, option1, option2);
-            }
-        }
-
-        /// <summary>
-        /// A check for the outdated, deprecated and vulnerable specific options. 
-        /// If --outdated, --deprecated, or --vulnerable are not present,
-        /// these options must not be used and an error is thrown.
-        /// </summary>
-        /// <param name="option"></param>
-        private void CheckForOutdatedOrDeprecatedOrVulnerable(string option)
-        {
-            if (!_appliedCommand.HasOption("deprecated") && !_appliedCommand.HasOption("outdated") && !_appliedCommand.HasOption("vulnerable"))
-            {
-                throw new GracefulException(LocalizableStrings.OutdatedOrDeprecatedOrVulnerableOptionOnly, option);
             }
         }
 
