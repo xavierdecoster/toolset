@@ -93,8 +93,8 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
             {
                 throw new GracefulException(
                     LocalizableStrings.MandatoryOptionMissing,
-                    specificFlag,
-                    string.Join(",", supportingOptions));
+                    $"--{specificFlag}",
+                    string.Join(", ", supportingOptions.Select(o => $"--{o}")));
             }
         }
 
@@ -106,7 +106,7 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
         {
             if (appliedCommand.HasOption(option1) && appliedCommand.HasOption(option2))
             {
-                throw new GracefulException(LocalizableStrings.OptionsCannotBeCombined, option1, option2);
+                throw new GracefulException(LocalizableStrings.OptionsCannotBeCombined, $"--{option1}", $"--{option2}");
             }
         }
 

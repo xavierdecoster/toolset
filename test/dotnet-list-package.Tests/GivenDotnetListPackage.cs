@@ -51,7 +51,7 @@ namespace Microsoft.DotNet.Cli.List.Package.Tests
                 .Should()
                 .Pass()
                 .And.NotHaveStdErr()
-                .And.HaveStdOutContainingIgnoreSpaces(packageName+packageVersion+packageVersion);
+                .And.HaveStdOutContainingIgnoreSpaces(packageName + packageVersion + packageVersion);
         }
 
         [Fact]
@@ -164,7 +164,7 @@ namespace Microsoft.DotNet.Cli.List.Package.Tests
 
             new ListPackageCommand()
                 .WithPath(projectDirectory)
-                .Execute(args:"--include-transitive")
+                .Execute(args: "--include-transitive")
                 .Should()
                 .Pass()
                 .And.NotHaveStdErr()
@@ -216,7 +216,7 @@ namespace Microsoft.DotNet.Cli.List.Package.Tests
                     .And.HaveStdOutContainingIgnoreSpaces(shouldInclude.Replace(" ", ""))
                     .And.NotHaveStdOutContaining(shouldntInclude.Replace(" ", ""));
             }
-            
+
         }
 
         [Fact]
@@ -269,5 +269,64 @@ namespace Microsoft.DotNet.Cli.List.Package.Tests
                 .And.NotHaveStdErr();
         }
 
+        [Theory]
+        [InlineData("--outdated", "--deprecated")]
+        [InlineData("--outdated", "--vulnerable")]
+        [InlineData("--deprecated", "--vulnerable")]
+        public void ItDoesNotAllowInvalidCombinationsOfCommandOptions(string option1, string option2)
+        {
+            var testAsset = "TestAppSimple";
+            var expectedErrorMessage = $"Options '{option1}' and '{option2}' cannot be combined.";
+            var projectDirectory = TestAssets
+                .Get(testAsset)
+                .CreateInstance()
+                .WithSourceFiles()
+                .Root
+                .FullName;
+
+            new RestoreCommand()
+                .WithWorkingDirectory(projectDirectory)
+                .Execute()
+                .Should()
+                .Pass()
+                .And.NotHaveStdErr();
+
+            new ListPackageCommand()
+                .WithPath(projectDirectory)
+                .Execute($"{option1} {option2}")
+                .Should()
+                .Fail()
+                .And.HaveStdErrContaining(expectedErrorMessage);
+        }
+
+        [Theory]
+        [InlineData("--include-prerelease", "--outdated", "--deprecated", "--vulnerable")]
+        [InlineData("--highest-patch", "--outdated", "--deprecated", "--vulnerable")]
+        [InlineData("--highest-minor", "--outdated", "--deprecated", "--vulnerable")]
+        public void ItRequiresSupportingCommandOptionForCertainFlags(string flag, params string[] supportingCommands)
+        {
+            var testAsset = "TestAppSimple";
+            var expectedErrorMessage = $"Option '{flag}' requires the usage of one of the following options: {string.Join(", ", supportingCommands)}.";
+            var projectDirectory = TestAssets
+                .Get(testAsset)
+                .CreateInstance()
+                .WithSourceFiles()
+                .Root
+                .FullName;
+
+            new RestoreCommand()
+                .WithWorkingDirectory(projectDirectory)
+                .Execute()
+                .Should()
+                .Pass()
+                .And.NotHaveStdErr();
+
+            new ListPackageCommand()
+                .WithPath(projectDirectory)
+                .Execute(flag)
+                .Should()
+                .Fail()
+                .And.HaveStdErrContaining(expectedErrorMessage);
+        }
     }
 }
