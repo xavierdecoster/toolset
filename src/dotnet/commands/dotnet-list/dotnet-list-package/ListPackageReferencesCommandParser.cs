@@ -54,7 +54,10 @@ namespace Microsoft.DotNet.Cli
                                     .ForwardAsMany(o => ForwardedArguments("--source", o.Arguments))),
                 Create.Option("--interactive",
                              CommonLocalizableStrings.CommandInteractiveOptionDescription,
-                             Accept.NoArguments().ForwardAs("--interactive")));
+                             Accept.NoArguments().ForwardAs("--interactive")),
+                Create.Option("--offline",
+                             LocalizableStrings.CmdOfflineDescription,
+                             Accept.NoArguments().ForwardAs("--offline")));
 
         private static IEnumerable<string> ForwardedArguments(string token, IEnumerable<string> arguments)
         {

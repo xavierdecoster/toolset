@@ -67,6 +67,9 @@ namespace Microsoft.DotNet.Tools.List.PackageReferences
             CheckForInvalidCommandOptionCombinations(_appliedCommand, "outdated", "deprecated");
             CheckForInvalidCommandOptionCombinations(_appliedCommand, "outdated", "vulnerable");
             CheckForInvalidCommandOptionCombinations(_appliedCommand, "deprecated", "vulnerable");
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "offline", "outdated");
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "offline", "deprecated");
+            CheckForInvalidCommandOptionCombinations(_appliedCommand, "offline", "vulnerable");
 
             return args.ToArray();
         }

@@ -22,6 +22,11 @@
         <target state="translated">Consente di scegliere un framework per mostrarne i pacchetti. Usare l'opzione più volte in caso di framework multipli.</target>
         <note />
       </trans-unit>
+      <trans-unit id="CmdOfflineDescription">
+        <source>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</source>
+        <target state="new">Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="CmdOutdatedDescription">
         <source>Lists packages that have newer versions. Cannot be combined with `--deprecated` or `--vulnerable` options.</source>
         <target state="needs-review-translation">Elenca i pacchetti per cui esistono versioni più recenti.</target>

@@ -273,6 +273,9 @@ namespace Microsoft.DotNet.Cli.List.Package.Tests
         [InlineData("--outdated", "--deprecated")]
         [InlineData("--outdated", "--vulnerable")]
         [InlineData("--deprecated", "--vulnerable")]
+        [InlineData("--offline", "--outdated")]
+        [InlineData("--offline", "--deprecated")]
+        [InlineData("--offline", "--vulnerable")]
         public void ItDoesNotAllowInvalidCombinationsOfCommandOptions(string option1, string option2)
         {
             var testAsset = "TestAppSimple";

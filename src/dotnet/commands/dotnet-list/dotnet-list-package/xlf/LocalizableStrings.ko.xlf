@@ -22,6 +22,11 @@
         <target state="translated">프레임워크를 선택하여 패키지를 표시합니다. 여러 프레임워크의 경우 옵션을 여러 번 사용합니다.</target>
         <note />
       </trans-unit>
+      <trans-unit id="CmdOfflineDescription">
+        <source>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</source>
+        <target state="new">Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="CmdOutdatedDescription">
         <source>Lists packages that have newer versions. Cannot be combined with `--deprecated` or `--vulnerable` options.</source>
         <target state="needs-review-translation">최신 버전이 있는 패키지를 나열합니다.</target>

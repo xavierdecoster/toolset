@@ -22,6 +22,11 @@
         <target state="translated">选择一个框架来显示其包。对多个框架多次使用该选项。</target>
         <note />
       </trans-unit>
+      <trans-unit id="CmdOfflineDescription">
+        <source>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</source>
+        <target state="new">Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="CmdOutdatedDescription">
         <source>Lists packages that have newer versions. Cannot be combined with `--deprecated` or `--vulnerable` options.</source>
         <target state="needs-review-translation">列出具有较新版本的包。</target>

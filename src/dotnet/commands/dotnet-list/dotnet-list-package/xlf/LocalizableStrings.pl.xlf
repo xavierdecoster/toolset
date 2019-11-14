@@ -22,6 +22,11 @@
         <target state="translated">Wybiera strukturę, aby wyświetlić jej pakiety. W przypadku wielu struktur użyj tej opcji wielokrotnie.</target>
         <note />
       </trans-unit>
+      <trans-unit id="CmdOfflineDescription">
+        <source>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</source>
+        <target state="new">Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="CmdOutdatedDescription">
         <source>Lists packages that have newer versions. Cannot be combined with `--deprecated` or `--vulnerable` options.</source>
         <target state="needs-review-translation">Zwraca listę pakietów, które mają nowsze wersje.</target>

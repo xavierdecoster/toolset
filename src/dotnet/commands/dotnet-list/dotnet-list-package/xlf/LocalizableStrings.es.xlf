@@ -22,6 +22,11 @@
         <target state="translated">Elige un marco para mostrar sus paquetes. Utilice la opción varias veces para marcos múltiples.</target>
         <note />
       </trans-unit>
+      <trans-unit id="CmdOfflineDescription">
+        <source>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</source>
+        <target state="new">Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</target>
+        <note />
+      </trans-unit>
       <trans-unit id="CmdOutdatedDescription">
         <source>Lists packages that have newer versions. Cannot be combined with `--deprecated` or `--vulnerable` options.</source>
         <target state="needs-review-translation">Muestra los paquetes que tienen versiones más recientes.</target>

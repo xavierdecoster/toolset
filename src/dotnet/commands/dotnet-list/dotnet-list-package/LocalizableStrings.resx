@@ -174,4 +174,7 @@
   <data name="OptionsCannotBeCombined" xml:space="preserve">
     <value>Options '{0}' and '{1}' cannot be combined.</value>
   </data>
+  <data name="CmdOfflineDescription" xml:space="preserve">
+    <value>Prevents online resources to be queried for information about newer package versions, deprecation metadata, or known vulnerabilities. Cannot be combined with '--outdated', '--deprecated', or '--vulnerable' options.</value>
+  </data>
 </root>
