@@ -42,11 +42,6 @@
         <target state="new">Lists packages that have known vulnerabilities. Cannot be combined with `--outdated` or `--deprecated` options.</target>
         <note />
       </trans-unit>
-      <trans-unit id="DeprecatedAndVulnerableOptionsCannotBeCombined">
-        <source>Option '--deprecated' and '--vulnerable' cannot be combined.</source>
-        <target state="new">Option '--deprecated' and '--vulnerable' cannot be combined.</target>
-        <note />
-      </trans-unit>
       <trans-unit id="MandatoryOptionMissing">
         <source>Option '{0}' requires the usage of one of the following options: {1}.</source>
         <target state="new">Option '{0}' requires the usage of one of the following options: {1}.</target>
